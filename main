@@ -17,6 +17,8 @@ The "and" in e.g. "one hundred and twenty-four" is optional, in some cases it's 
 All tested numbers are valid, you don't need to validate them
 '''
 
+#SOLUTION
+
 numbers = {
     'zero':0,
     'one':1,
@@ -46,23 +48,24 @@ numbers = {
     'seventy': 70,
     'eighty': 80,
     'ninety': 90,
-    'hundred': '',
-    'thousand': '',
-    'million': '',
+    'hundred': 100,
+    'thousand': 1000,
+    'million': 1000000,
     'and': ''
     } 
 
-userString = input("Write a number in small letters:")
-newList=userString.replace('-', ' ').split(' ')
+userString = input("Enter a number without using digits (ex: one hundred and twenty-four):\n")
+userString = userString.lower()
+listLetters=userString.replace('-', ' ').split(' ')
 #get rid of hyphens and split into words
-print(newList) #just to see what's going on
+print(listLetters) #check on what's going on
 
 listDigits=[]
-for item in newList:
-    a=numbers.get(item) #get valuse from dict
-    listDigits.append(a) #and create a new list
-print(listDigits) #just to see what's going on
+for item in listLetters:
+    a=numbers.get(item) #get values from dict
+    listDigits.append(a) #and create a new list with digits
+print(listDigits) #check on what's going on
 
 while ("" in listDigits): 
     listDigits.remove("") #remove empty elements from list
-print(*listDigits,sep='') #print without white space
+print(*listDigits,sep='') #print without white spaces
